@@ -1,7 +1,7 @@
-Forked from exvim/exGlobalSearch, removed dependency on global variables from exvim.
+Forked from exvim/exGlobalSearch, removed dependency on global variables used by exvim.
 Usage:
 
-# In your project directory, type `mkid`.
-# Launch vim in this directory, type `:GS <symbol_name>` to find the symbol, for example:
+* In your project directory, type `mkid` to generate the ID database.
+* Launch vim in this directory, type `:GS <symbol_name>` to find the symbol, for example:
 :GS fileName
 Will list all the 'fileName's in a new window.
