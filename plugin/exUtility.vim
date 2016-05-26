@@ -302,7 +302,7 @@ function s:UpdateSyntaxHighlights() " <<<
 
     " update custom environment
     if exists('*g:ex_CustomHighlight')
-        call g:ex_CustomHighlight()
+        call EX_CustomHighlight()
     endif
 
 endfunction " >>>

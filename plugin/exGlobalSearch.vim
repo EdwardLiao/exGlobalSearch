@@ -167,7 +167,7 @@ let s:exGS_quick_view_search_pattern = ''
 " ------------------------------------------------------------------ 
 
 function s:exGS_ClearEntryToggleWindow( title ) " <<<
-    call g:exJS_ClearEntryStateList ()
+    call EXJS_ClearEntryStateList ()
     call s:exGS_ToggleWindow ( a:title )
 endfunction " >>>
 
@@ -182,9 +182,9 @@ function s:exGS_OpenWindow( short_title ) " <<<
     let title = '__exGS_' . s:exGS_short_title . 'Window__'
     " open window
     if g:exGS_use_vertical_window
-        call exUtility#OpenWindow( title, g:exGS_window_direction, g:exGS_window_width, g:exGS_use_vertical_window, g:exGS_edit_mode, 1, 'g:exGS_Init'.s:exGS_short_title.'Window', 'g:exGS_Update'.s:exGS_short_title.'Window' )
+        call exUtility#OpenWindow( title, g:exGS_window_direction, g:exGS_window_width, g:exGS_use_vertical_window, g:exGS_edit_mode, 1, 'EXGS_Init'.s:exGS_short_title.'Window', 'EXGS_Update'.s:exGS_short_title.'Window' )
     else
-        call exUtility#OpenWindow( title, g:exGS_window_direction, g:exGS_window_height, g:exGS_use_vertical_window, g:exGS_edit_mode, 1, 'g:exGS_Init'.s:exGS_short_title.'Window', 'g:exGS_Update'.s:exGS_short_title.'Window' )
+        call exUtility#OpenWindow( title, g:exGS_window_direction, g:exGS_window_height, g:exGS_use_vertical_window, g:exGS_edit_mode, 1, 'EXGS_Init'.s:exGS_short_title.'Window', 'EXGS_Update'.s:exGS_short_title.'Window' )
     endif
 endfunction " >>>
 
@@ -218,9 +218,9 @@ function s:exGS_ToggleWindow( short_title ) " <<<
     " toggle exGS window
     let title = '__exGS_' . s:exGS_short_title . 'Window__'
     if g:exGS_use_vertical_window
-        call exUtility#ToggleWindow( title, g:exGS_window_direction, g:exGS_window_width, g:exGS_use_vertical_window, 'none', 0, 'g:exGS_Init'.s:exGS_short_title.'Window', 'g:exGS_Update'.s:exGS_short_title.'Window' )
+        call exUtility#ToggleWindow( title, g:exGS_window_direction, g:exGS_window_width, g:exGS_use_vertical_window, 'none', 0, 'EXGS_Init'.s:exGS_short_title.'Window', 'EXGS_Update'.s:exGS_short_title.'Window' )
     else
-        call exUtility#ToggleWindow( title, g:exGS_window_direction, g:exGS_window_height, g:exGS_use_vertical_window, 'none', 0, 'g:exGS_Init'.s:exGS_short_title.'Window', 'g:exGS_Update'.s:exGS_short_title.'Window' )
+        call exUtility#ToggleWindow( title, g:exGS_window_direction, g:exGS_window_height, g:exGS_use_vertical_window, 'none', 0, 'EXGS_Init'.s:exGS_short_title.'Window', 'EXGS_Update'.s:exGS_short_title.'Window' )
     endif
 endfunction " >>>
 
@@ -311,9 +311,9 @@ function s:exGS_Goto() " <<<
     let stack_info.tagidx = -1 
     if s:exGS_need_push_search_result 
         let s:exGS_need_push_search_result = 0 
-        call g:exJS_PushJumpStack (stack_info) 
+        call EXJS_PushJumpStack (stack_info) 
     else 
-        call g:exJS_SetLastJumpStack (stack_info) 
+        call EXJS_SetLastJumpStack (stack_info) 
     endif 
 
     " go back if needed 
@@ -459,7 +459,7 @@ endfunction " >>>
 " Desc: Init exGlobalSearch window
 " ------------------------------------------------------------------ 
 
-function g:exGS_InitSelectWindow() " <<<
+function EXGS_InitSelectWindow() " <<<
     setlocal number
 
     " syntax highlight
@@ -505,7 +505,7 @@ endfunction " >>>
 " Desc: Update exGlobalSearch window 
 " ------------------------------------------------------------------ 
 
-function g:exGS_UpdateSelectWindow() " <<<
+function EXGS_UpdateSelectWindow() " <<<
     silent call cursor(s:exGS_select_idx, 1)
     call exUtility#HighlightConfirmLine()
 endfunction " >>>
@@ -594,7 +594,7 @@ function s:exGS_GetGlobalSearchResult(search_pattern, search_method, direct_jump
     let stack_info.keyword = a:search_pattern
     let stack_info.taglist = []
     let stack_info.tagidx = -1
-    call g:exJS_PushEntryState ( stack_info )
+    call EXJS_PushEntryState ( stack_info )
 
     " open and goto search window first
     let gs_winnr = bufwinnr(s:exGS_select_title)
@@ -716,7 +716,7 @@ endfunction " >>>
 " Desc: Init exGlobalSearch select window
 " ------------------------------------------------------------------ 
 
-function g:exGS_InitQuickViewWindow() " <<<
+function EXGS_InitQuickViewWindow() " <<<
     setlocal number
     setlocal foldmethod=marker foldmarker=<<<<<<,>>>>>> foldlevel=1
 
@@ -756,7 +756,7 @@ endfunction " >>>
 " Desc: Update exGlobalSearch quickview window 
 " ------------------------------------------------------------------ 
 
-function g:exGS_UpdateQuickViewWindow() " <<<
+function EXGS_UpdateQuickViewWindow() " <<<
     silent call cursor(s:exGS_quick_view_idx, 1)
     call exUtility#HighlightConfirmLine()
 endfunction " >>>
